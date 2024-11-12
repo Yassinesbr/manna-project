@@ -5,7 +5,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const getRoles = async () => {
   try {
     const response = await axios.get(
-      `${API_BASE_URL}/api/Roles?identifier=yassine_essebbar`
+      `${API_BASE_URL}/Roles?identifier=yassine_essebbar`
     );
     return response.data;
   } catch (err) {
@@ -17,7 +17,7 @@ export const getRoles = async () => {
 export const addRole = async (newRole) => {
   try {
     const response = await axios.post(
-      `${API_BASE_URL}/api/AddRole?identifier=yassine_essebbar`,
+      `${API_BASE_URL}/AddRole?identifier=yassine_essebbar`,
       newRole
     );
     return response.data;
@@ -30,7 +30,7 @@ export const addRole = async (newRole) => {
 export const deleteRole = async (id) => {
   try {
     await axios.delete(
-      `${API_BASE_URL}/api/DeleteRole/${id}?identifier=yassine_essebbar`
+      `${API_BASE_URL}/DeleteRole/${id}?identifier=yassine_essebbar`
     );
     return id;
   } catch (err) {
@@ -42,7 +42,7 @@ export const deleteRole = async (id) => {
 export const getRoleById = async (id) => {
   try {
     const response = await axios.get(
-      `${API_BASE_URL}/api/Roles/${id}?identifier=yassine_essebbar`
+      `${API_BASE_URL}/Roles/${id}?identifier=yassine_essebbar`
     );
     return response.data;
   } catch (err) {
@@ -53,7 +53,7 @@ export const getRoleById = async (id) => {
 
 export const updateRole = async (role) => {
   try {
-    await axios.put(`/api/UpdateRole?identifier=yassine_essebbar`, role);
+    await axios.put(`/UpdateRole?identifier=yassine_essebbar`, role);
   } catch (err) {
     console.error("Error updating role:", err);
     throw err;
