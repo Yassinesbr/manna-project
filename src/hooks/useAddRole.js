@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { NotificationContext } from "../context/NotificationContext";
 import { addRole, getRoleById } from "../api/roleService";
-import { PermissionType } from "../enum/PermissionType";
+import { PermissionType } from "../enum/permissionTypes";
 import useModifyRole from "./useModifyRole";
 
 const useAddRole = () => {

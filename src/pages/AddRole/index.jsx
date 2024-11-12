@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 import { AccessLevel } from "../../enum/accessLevel";
 import useAddRole from "../../hooks/useAddRole";
 import { useNavigate, useParams } from "react-router-dom";
-import { PermissionType } from "../../enum/PermissionType";
+import { PermissionType } from "../../enum/permissionTypes";
 
 const AddRole = () => {
   const { id } = useParams();
