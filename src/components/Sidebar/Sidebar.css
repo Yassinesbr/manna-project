@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0px;
+  bottom: 20px;
+  width: 108px;
+  background: #33c173;
+  overflow-x: hidden;
+}
+
+.sidebar.active {
+  width: 300px;
+}
+
+.logo-link {
+  margin-bottom: 71px;
+}
+
+.sidebar .list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 5px;
+  padding-top: 40px;
+  list-style-type: none;
+}
+
+.sidebar .list .list-item {
+  position: relative;
+  list-style: none;
+  width: 100%;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.list-item-link {
+  text-decoration: none;
+}
+
+.sidebar .list .list-item.active {
+  background: var(--text-color);
+}
+
+.sidebar .list .list-item:hover {
+  background: var(--primary-dark-color);
+}
+
+.sidebar .list .list-item b:nth-child(1) {
+  position: absolute;
+  top: -20px;
+  height: 20px;
+  width: 100%;
+  background: var(--text-color);
+  display: none;
+}
+
+.sidebar .list .list-item b:nth-child(1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+}
+
+.sidebar .list .list-item b:nth-child(2) {
+  position: absolute;
+  bottom: -20px;
+  height: 20px;
+  width: 100%;
+  background: var(--text-color);
+  display: none;
+}
+
+.sidebar .list .list-item b:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 20px;
+  background: var(--primary-color);
+}
+
+.sidebar .list .list-item.active b:nth-child(1),
+.sidebar .list .list-item.active b:nth-child(2) {
+  display: block;
+}
+
+.sidebar .list .list-item .list-item-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.sidebar .list .list-item .list-item-link .icon {
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar .list .list-item .list-item-link .icon img {
+  width: 44px;
+  height: 44px;
+}
+
+.icon i {
+  font-size: 1.5rem;
+  font-weight: 900 !important;
+}
+
+.sidebar .list .list-item .list-item-link .title {
+  padding-left: 10px;
+  height: 60px;
+  line-height: 60px;
+  white-space: normal;
+}

@@ -1,0 +1,18 @@
+:root {
+  --primary-color: #33c173;
+  --primary-dark-color: #258d54;
+  --text-color: #ffffff;
+  --secondary-color: #f2f4f5;
+  --secondary-dark-color: #e2e6e8;
+  --secondary-text-color: #5e6366;
+  --gray-1: #808285;
+  --gray-2: #83898c;
+  --gray-3: #5e6366;
+  --gray-4: #abafb1;
+  --success-color: #33c173;
+  --error-color: #f57e77;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}

@@ -1,0 +1,37 @@
+.switch-wrapper {
+  margin-bottom: 20px;
+}
+
+.switch-label {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  color: var(--gray-3);
+}
+
+.switch-container {
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.switch-option {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.switch-option.selected {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.switch-option:not(.selected) {
+  background-color: var(--secondary-color);
+  color: var(--gray-4);
+}

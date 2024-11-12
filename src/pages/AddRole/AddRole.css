@@ -1,0 +1,65 @@
+.add-role-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.05px;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  text-align: left;
+  color: var(--gray-4);
+}
+
+.header-container {
+  max-width: 644px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.add-role-input-container {
+  max-width: 375px;
+}
+
+.role-icons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 21px;
+  margin-bottom: 31px;
+}
+
+.select-icon-title {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  color: var(--gray-3);
+}
+
+.icons-container {
+  display: flex;
+  gap: 16px;
+}
+
+.role-icon {
+  height: 44px;
+  width: 44px;
+  cursor: pointer;
+}
+
+.permissions-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.button-container {
+  display: flex;
+  gap: 24px;
+}

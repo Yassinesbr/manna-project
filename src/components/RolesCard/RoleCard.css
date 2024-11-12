@@ -1,0 +1,95 @@
+.role-card {
+  height: 378px;
+  width: 303px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  padding: 16px;
+}
+
+.role-card-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.role-card-header-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.0008em;
+  text-align: left;
+  color: #808285;
+}
+
+.role-card-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.role-card-edit-icons-container {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-icons {
+  height: 20px;
+  width: 20px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.role-card-profile-icon {
+  height: 80px;
+  width: 80px;
+}
+
+.role-card-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.role-card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.role-card-body-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.users-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.role-card-body-item-text {
+  color: #808285;
+}
+
+.role-card-link {
+  color: var(--primary-color);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: center;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  cursor: pointer;
+}
