@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import "./Layout.css";
 import Sidebar from "../Sidebar";
 import { NotificationProvider } from "../../context/NotificationContext";
-import TopBar from "../Topbar";
+import TopBar from "../TopBar";
 
 function Layout({ children }) {
   return (
