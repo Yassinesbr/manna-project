@@ -1,8 +1,12 @@
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const getRoles = async () => {
   try {
-    const response = await axios.get("/api/Roles?identifier=yassine_essebbar");
+    const response = await axios.get(
+      `${API_BASE_URL}/api/Roles?identifier=yassine_essebbar`
+    );
     return response.data;
   } catch (err) {
     console.error("Error fetching roles:", err);
@@ -13,7 +17,7 @@ export const getRoles = async () => {
 export const addRole = async (newRole) => {
   try {
     const response = await axios.post(
-      "/api/AddRole?identifier=yassine_essebbar",
+      `${API_BASE_URL}/api/AddRole?identifier=yassine_essebbar`,
       newRole
     );
     return response.data;
@@ -25,7 +29,9 @@ export const addRole = async (newRole) => {
 
 export const deleteRole = async (id) => {
   try {
-    await axios.delete(`/api/DeleteRole/${id}?identifier=yassine_essebbar`);
+    await axios.delete(
+      `${API_BASE_URL}/api/DeleteRole/${id}?identifier=yassine_essebbar`
+    );
     return id;
   } catch (err) {
     console.error("Error deleting role:", err);
@@ -36,7 +42,7 @@ export const deleteRole = async (id) => {
 export const getRoleById = async (id) => {
   try {
     const response = await axios.get(
-      `/api/Roles/${id}?identifier=yassine_essebbar`
+      `${API_BASE_URL}/api/Roles/${id}?identifier=yassine_essebbar`
     );
     return response.data;
   } catch (err) {
