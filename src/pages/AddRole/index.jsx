@@ -5,8 +5,8 @@ import SwitchButton from "../../components/SwitchButton";
 import Button from "../../components/Button";
 import { AccessLevel } from "../../enum/accessLevel";
 import useAddRole from "../../hooks/useAddRole";
-import { PermissionType } from "../../enum/PermissionType";
 import { useNavigate, useParams } from "react-router-dom";
+import { PermissionType } from "../../enum/PermissionType";
 
 const AddRole = () => {
   const { id } = useParams();
