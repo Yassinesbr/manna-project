@@ -27,9 +27,9 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <div className="sidebar__logo">
+      <Link to="/" className="sidebar__logo">
         <img src={mannaLogo} alt="logo" />
-      </div>
+      </Link>
       <div className="sidebar__menu">
         {menuItems.map((item, index) => {
           const isItemActive = location.pathname.startsWith(item.path);

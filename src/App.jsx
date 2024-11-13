@@ -5,12 +5,14 @@ import Page2 from "./pages/Page2";
 import Page3 from "./pages/Page3";
 import Roles from "./pages/Roles";
 import AddRole from "./pages/AddRole";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <Router>
       <Layout>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/roles" element={<Roles />} />
           <Route path="/roles/add-role" element={<AddRole />} />
           <Route path="/roles/edit-role/:id" element={<AddRole />} />

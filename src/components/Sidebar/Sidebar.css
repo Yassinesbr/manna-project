@@ -10,7 +10,7 @@ aside {
   padding-left: 20px;
   height: 100vh;
   background: var(--primary-color);
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
 }
