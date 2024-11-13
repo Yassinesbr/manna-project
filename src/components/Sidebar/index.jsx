@@ -1,43 +1,50 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
-import profileIcon from "../../assets/person/enabled.svg";
 import mannaLogo from "../../assets/manna-logo.svg";
+import {
+  articleIcon,
+  speedIcon,
+  lockIcon,
+  groupIcon,
+  domaineIcon,
+  autoAwesomeIcon,
+  integrationIcon,
+  settingIcon,
+} from "../../assets";
 
 const Sidebar = () => {
   const location = useLocation();
   const menuItems = [
-    { path: "/roles", icon: profileIcon },
-    { path: "/page2", icon: profileIcon },
-    { path: "/page3", icon: profileIcon },
+    { path: "/page2", icon: speedIcon },
+    { path: "/page3", icon: lockIcon },
+    { path: "/roles", icon: groupIcon },
+    { path: "/page4", icon: domaineIcon },
+    { path: "/page5", icon: autoAwesomeIcon },
+    { path: "/page6", icon: articleIcon },
+    { path: "/page7", icon: integrationIcon },
+    { path: "/page8", icon: settingIcon },
   ];
 
   return (
-    <div className="sidebar">
-      <ul className="list">
-        <li className="list-item-link logo-link">
-          <Link to="/">
-            <div className="logo">
-              <img src={mannaLogo} alt="logo" />
-            </div>
-          </Link>
-        </li>
+    <aside className="sidebar">
+      <div className="sidebar__logo">
+        <img src={mannaLogo} alt="logo" />
+      </div>
+      <div className="sidebar__menu">
         {menuItems.map((item, index) => {
           const isItemActive = location.pathname.startsWith(item.path);
           return (
-            <li
+            <Link
               key={index}
-              className={`list-item${isItemActive ? " active" : ""}`}
+              to={item.path}
+              className={`sidebar__menu-item${isItemActive ? " active" : ""}`}
             >
-              <Link to={item.path} className="list-item-link">
-                <div className="icon">
-                  <img src={item.icon} alt="icon" />
-                </div>
-              </Link>
-            </li>
+              <img src={item.icon} alt="icon" className="sidebar__menu-icon" />
+            </Link>
           );
         })}
-      </ul>
-    </div>
+      </div>
+    </aside>
   );
 };
 

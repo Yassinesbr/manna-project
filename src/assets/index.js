@@ -1,0 +1,26 @@
+// import and export all assets here
+export { default as articleIcon } from "./article.svg";
+export { default as mannaLogo } from "./manna-logo.svg";
+export { default as profileIcon } from "./person/enabled.svg";
+export { default as addIcon } from "./add.svg";
+export { default as autoAwesomeIcon } from "./auto-awsome.svg";
+export { default as deleteIcon } from "./delete.svg";
+export { default as editIcon } from "./edit.svg";
+export { default as domaineIcon } from "./domaine.svg";
+export { default as eyeIcon } from "./eye.svg";
+export { default as integrationIcon } from "./integration.svg";
+export { default as lockIcon } from "./lock.svg";
+export { default as logoutIcon } from "./logout.svg";
+export { default as settingIcon } from "./setting.svg";
+export { default as speedIcon } from "./speed.svg";
+export { default as usersIcon } from "./users.svg";
+export { default as groupIcon } from "./group.svg";
+export { default as profileIconDisabled } from "./person/disabled.svg";
+export { default as accountCircleIconEnabled } from "./accountCircle/enabled.svg";
+export { default as accountCircleIconDisabled } from "./accountCircle/disabled.svg";
+export { default as businessCenterIconEnabled } from "./businessCenter/enabled.svg";
+export { default as businessCenterIconDisabled } from "./businessCenter/disabled.svg";
+export { default as headsetMicIconEnabled } from "./headsetMic/enabled.svg";
+export { default as headsetMicIconDisabled } from "./headsetMic/disabled.svg";
+export { default as manageAccountsIconEnabled } from "./manageAccounts/enabled.svg";
+export { default as manageAccountsIconDisabled } from "./manageAccounts/disabled.svg";
