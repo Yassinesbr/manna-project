@@ -7,6 +7,7 @@ import { AccessLevel } from "../../enum/accessLevel";
 import useAddRole from "../../hooks/useAddRole";
 import { useNavigate, useParams } from "react-router-dom";
 import { PermissionType } from "../../enum/permissionTypes";
+import Typography from "../../components/Typography";
 
 const AddRole = () => {
   const { id } = useParams();
@@ -26,17 +27,18 @@ const AddRole = () => {
   if (loading) {
     return <div className="loading-message">Loading...</div>;
   }
-
+  const title = id ? "Edit Role" : "Add Custom Role";
   return (
     <>
       <div className="header-container">
-        <h1 className="add-role-title">
-          {id ? "Edit Role" : "Add Custom Role"}
-        </h1>
-        <p className="subtitle">
+        <Typography variant="heading1" className="color-black">
+          {title}
+        </Typography>
+
+        <Typography variant="body2" className="color-gray-2">
           Configure general information and permissions below. Don’t forget to
           save the Custom Role.
-        </p>
+        </Typography>
         <div className="add-role-input-container">
           <TextField
             label="Custom Role Name"
@@ -46,7 +48,9 @@ const AddRole = () => {
           />
         </div>
         <div className="role-icons-container">
-          <p className="select-icon-title">Select Role Icon</p>
+          <Typography variant="caption" className="color-gray-3">
+            Select Role Icon
+          </Typography>
           <div className="icons-container">
             {roleIcons.map((icon, index) => (
               <div
@@ -63,7 +67,9 @@ const AddRole = () => {
           </div>
         </div>
       </div>
-      <h1 className="add-role-title">Permissions</h1>
+      <Typography variant="subheading1" className="color-black" gutterBottom>
+        Permissions
+      </Typography>
       <div className="permissions-container">
         {PermissionType.map((permission) => {
           const options =

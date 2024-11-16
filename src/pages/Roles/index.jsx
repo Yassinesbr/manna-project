@@ -4,6 +4,7 @@ import "./Roles.css";
 import AddCostumeRoleCard from "../../components/AddCostumeRoleCard";
 import roleIcons from "../../enum/roleIcon";
 import useRoles from "../../hooks/useRoles";
+import Typography from "../../components/Typography";
 
 const Roles = () => {
   const {
@@ -18,16 +19,28 @@ const Roles = () => {
   } = useRoles();
 
   if (loading) {
-    return <div className="title">Loading roles...</div>;
+    <Typography variant="heading1" className="color-black">
+      Loading roles...
+    </Typography>;
   }
 
   if (error) {
-    return <div className="title">{error}</div>;
+    return (
+      <Typography variant="heading1" className="color-red">
+        {error}
+      </Typography>
+    );
   }
 
   return (
     <div>
-      <h1 className="title">User Roles</h1>
+      <Typography
+        variant="heading1"
+        style={{ marginBottom: "24px" }}
+        className="color-black"
+      >
+        User Roles
+      </Typography>
       <div className="cards-container">
         {roles.map((role) => (
           <RoleCard

@@ -18,15 +18,6 @@
   width: 100%;
 }
 
-.role-card-header-text {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: -0.0008em;
-  text-align: left;
-  color: #808285;
-}
-
 .role-card-edit {
   display: flex;
   justify-content: space-between;
@@ -77,19 +68,4 @@
 .users-icon {
   height: 20px;
   width: 20px;
-}
-
-.role-card-body-item-text {
-  color: #808285;
-}
-
-.role-card-link {
-  color: var(--primary-color);
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 24.2px;
-  text-align: center;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  cursor: pointer;
 }

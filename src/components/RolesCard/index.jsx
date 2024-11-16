@@ -4,19 +4,21 @@ import deleteIcon from "../../assets/delete.svg";
 import "./RoleCard.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import Typography from "../Typography";
 
 const RoleCard = ({ id, role, users, isDefault = false, icon, onDelete }) => {
   const navigate = useNavigate();
   const handleEdit = () => {
     navigate(`/roles/edit-role/${id}`);
   };
+  const cardTitle = isDefault ? "Default Role" : "Custom Role";
   return (
     <div className="role-card">
       <div className="role-card-header">
         <div className="role-card-edit">
-          <p className="role-card-header-text">
-            {isDefault ? "Default Role" : "Custom Role"}
-          </p>
+          <Typography variant="caption" className="color-gray-1">
+            {cardTitle}
+          </Typography>
           <div className="role-card-edit-icons-container">
             <img
               src={editIcon}
@@ -34,17 +36,25 @@ const RoleCard = ({ id, role, users, isDefault = false, icon, onDelete }) => {
         </div>
         <div className="role-card-avatar">
           <img src={icon} alt="profile" className="role-card-profile-icon" />
-          <h3>{role}</h3>
+          <Typography variant="subheading1" className="color-black">
+            {role}
+          </Typography>
         </div>
       </div>
       <div className="role-card-body">
         <div className="role-card-body-item">
           <img src={usersIcon} alt="users" className="users-icon" />
-          <p className="role-card-body-item-text">{users}</p>
+          <Typography variant="subheading2" className="color-gray-1">
+            {users}
+          </Typography>
         </div>
-        <p className="role-card-body-item-text">Users assigned</p>
+        <Typography variant="body1" className="color-gray-1">
+          Users assigned
+        </Typography>
       </div>
-      <div className="role-card-link">Use as template</div>
+      <Typography variant="underline" className="color-primary">
+        Use as template
+      </Typography>
     </div>
   );
 };

@@ -1,0 +1,84 @@
+.typography {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.typography.heading1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.05px;
+}
+
+.typography.subheading1 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.0041em;
+}
+
+.typography.subheading2 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: -0.0008em;
+}
+
+.typography.body1 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.0008em;
+}
+
+.typography.body2 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.typography.caption {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+}
+
+.typography.underline {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: center;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  cursor: pointer;
+}
+
+.typography.color-primary {
+  color: var(--primary-color);
+}
+
+.typography.color-gray-1 {
+  color: var(--gray-1);
+}
+
+.typography.color-gray-2 {
+  color: var(--gray-2);
+}
+
+.typography.color-gray-3 {
+  color: var(--gray-3);
+}
+
+.typography.color-black {
+  color: var(--black);
+}
+
+.typography.color-white {
+  color: var(--text-color);
+}
+
+.typography.color-red {
+  color: var(--error-color);
+}

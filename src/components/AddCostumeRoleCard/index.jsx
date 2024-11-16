@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import addIcon from "../../assets/add.svg";
 import "./AddCostumeRoleCard.css";
+import Typography from "../Typography";
 
 const AddCostumeRoleCard = () => {
   const navigate = useNavigate();
@@ -8,7 +9,9 @@ const AddCostumeRoleCard = () => {
   return (
     <div className="add-role-card" onClick={() => navigate("/roles/add-role")}>
       <img src={addIcon} alt="add" className="add-icon" />
-      <div className="role-card-link">Add Custom Role</div>
+      <Typography variant="underline" className="color-primary">
+        Add Custom Role
+      </Typography>
     </div>
   );
 };
