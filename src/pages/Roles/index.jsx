@@ -19,17 +19,11 @@ const Roles = () => {
   } = useRoles();
 
   if (loading) {
-    <Typography variant="heading1" className="color-black">
-      Loading roles...
-    </Typography>;
+    return <div>Loading roles...</div>;
   }
 
   if (error) {
-    return (
-      <Typography variant="heading1" className="color-red">
-        {error}
-      </Typography>
-    );
+    return <div>{error}</div>;
   }
 
   return (
