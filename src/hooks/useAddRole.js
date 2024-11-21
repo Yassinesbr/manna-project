@@ -24,6 +24,27 @@ const useAddRole = () => {
     }))
   );
 
+  const fetchRole = async () => {
+    if (id) {
+      showLoader();
+      try {
+        const role = await getRoleById(id);
+        setValue(role.name);
+        setSelectedIcon(role.roleIcon);
+        setPermissions(role.permissions);
+      } catch (error) {
+        console.error("Error fetching role:", error);
+        showNotification("Failed to load role.", "error");
+      } finally {
+        hideLoader();
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchRole();
+  }, [id]);
+
   const handleSwitchChange = (selectedValue, permissionId) => {
     setPermissions((prevPermissions) =>
       prevPermissions.map((perm) =>
@@ -40,50 +61,21 @@ const useAddRole = () => {
       return;
     }
 
-    const roleData = {
-      name: value,
-      roleIcon: selectedIcon,
-      permissions,
-    };
+    const roleData = { name: value, roleIcon: selectedIcon, permissions };
 
-    if (id) {
-      modifyRole(id, roleData);
-    } else {
-      try {
+    try {
+      if (id) {
+        await modifyRole(id, roleData);
+      } else {
         await addRole(roleData);
         showNotification("Role added successfully!", "success");
         navigate(rolesRoute);
-      } catch (error) {
-        console.error("Error saving role:", error);
-        showNotification("An error has occurred.", "error");
       }
+    } catch (error) {
+      console.error("Error saving role:", error);
+      showNotification("An error has occurred.", "error");
     }
   };
-
-  useEffect(() => {
-    if (id) {
-      showLoader();
-    }
-  }, []);
-
-  useEffect(() => {
-    if (id) {
-      getRoleById(id)
-        .then((role) => {
-          setValue(role.name);
-          setSelectedIcon(role.roleIcon);
-          setPermissions(role.permissions);
-        })
-        .catch((error) => {
-          console.error("Error fetching role:", error);
-          hideLoader();
-          showNotification("Failed to load role.", "error");
-        })
-        .finally(() => {
-          hideLoader();
-        });
-    }
-  }, [id, showNotification, hideLoader]);
 
   return {
     value,
