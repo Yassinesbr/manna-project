@@ -1,29 +1,28 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { NotificationContext } from "../context/NotificationContext";
 import { deleteRole } from "../api/roleService";
+import { LoaderContext } from "../context/LoaderContext";
 
 const useDeleteRole = () => {
   const showNotification = useContext(NotificationContext);
-  const [loading, setLoading] = useState(false);
+  const { showLoader, hideLoader } = useContext(LoaderContext);
 
-  const handleDelete = async (roleToDelete, setRoles, setIsModalOpen) => {
-    setLoading(true);
+  const handleDelete = async (roleToDelete, onSuccess = () => {}) => {
+    showLoader();
     try {
       const deletedId = await deleteRole(roleToDelete.id);
-      setRoles((prevRoles) =>
-        prevRoles.filter((role) => role.id !== deletedId)
-      );
+      onSuccess(deletedId);
       showNotification("Custom Role Deleted.", "error");
     } catch (err) {
       console.error("Error deleting role:", err);
+      hideLoader();
       showNotification("Failed to delete role.", "error");
     } finally {
-      setIsModalOpen(false);
-      setLoading(false);
+      hideLoader();
     }
   };
 
-  return { handleDelete, loading };
+  return { handleDelete };
 };
 
 export default useDeleteRole;

@@ -7,10 +7,11 @@ import { LoaderContext } from "../context/LoaderContext";
 const useRoles = () => {
   const { showLoader, hideLoader } = useContext(LoaderContext);
   const showNotification = useContext(NotificationContext);
+
   const [roles, setRoles] = useState([]);
-  const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [roleToDelete, setRoleToDelete] = useState(null);
+  const [error, setError] = useState(null);
 
   const { handleDelete } = useDeleteRole();
 
@@ -23,12 +24,13 @@ const useRoles = () => {
     setIsModalOpen(true);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (roleToDelete) {
       setIsModalOpen(false);
-      showLoader();
-      handleDelete(roleToDelete, setRoles, setIsModalOpen).finally(() => {
-        hideLoader();
+      await handleDelete(roleToDelete, (deletedId) => {
+        setRoles((prevRoles) =>
+          prevRoles.filter((role) => role.id !== deletedId)
+        );
       });
     }
   };
@@ -38,25 +40,28 @@ const useRoles = () => {
     setRoleToDelete(null);
   };
 
-  useEffect(() => {
+  const fetchRoles = async () => {
     showLoader();
-    getRoles()
-      .then((response) => {
-        setRoles(response);
-        hideLoader();
-      })
-      .catch((error) => {
-        console.error("Error fetching roles:", error);
-        setError("Failed to load roles.");
-        hideLoader();
-      });
+    try {
+      const fetchedRoles = await getRoles();
+      setRoles(fetchedRoles);
+    } catch (error) {
+      console.error("Error fetching roles:", error);
+      setError("Failed to load roles.");
+    } finally {
+      hideLoader();
+    }
+  };
+
+  useEffect(() => {
+    fetchRoles();
   }, []);
 
   return {
     roles,
-    error,
     isModalOpen,
     roleToDelete,
+    error,
     handleDeleteClick,
     confirmDelete,
     cancelDelete,
