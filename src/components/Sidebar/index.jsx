@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+// index.jsx
 import "./Sidebar.css";
 import mannaLogo from "../../assets/manna-logo.svg";
 import {
@@ -12,9 +12,12 @@ import {
   settingIcon,
 } from "../../assets";
 import { rolesRoute } from "../../App";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const location = useLocation();
+  const [activeIndex, setActiveIndex] = useState(null);
   const menuItems = [
     { path: "/page2", icon: speedIcon },
     { path: "/page3", icon: lockIcon },
@@ -25,6 +28,10 @@ const Sidebar = () => {
     { path: "/page7", icon: integrationIcon },
     { path: "/page8", icon: settingIcon },
   ];
+
+  const handleClick = (index) => {
+    setActiveIndex(index);
+  };
 
   return (
     <aside className="sidebar">
@@ -38,7 +45,10 @@ const Sidebar = () => {
             <Link
               key={index}
               to={item.path}
-              className={`sidebar__menu-item${isItemActive ? " active" : ""}`}
+              className={`sidebar__menu-item${isItemActive ? " active" : ""} ${
+                activeIndex === index ? " animate-click" : " animate-load"
+              }`}
+              onClick={() => handleClick(index)}
             >
               <img src={item.icon} alt="icon" className="sidebar__menu-icon" />
             </Link>

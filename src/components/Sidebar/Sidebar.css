@@ -93,3 +93,62 @@ aside p {
   padding: 21px 0;
   margin-bottom: 71px;
 }
+
+.sidebar__menu-icon {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@keyframes click-scale {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation to the animate-click class */
+.animate-click .sidebar__menu-icon {
+  animation: click-scale 0.3s ease;
+}
+
+/* Add animation on first load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sidebar__menu-item {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.sidebar__menu-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.sidebar__menu-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.sidebar__menu-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.sidebar__menu-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.sidebar__menu-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.sidebar__menu-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.sidebar__menu-item:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.sidebar__menu-item:nth-child(8) {
+  animation-delay: 0.8s;
+}
