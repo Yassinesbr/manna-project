@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import "./Typography.css";
 
 const Typography = ({
-  variant,
+  variant = "body1",
   children,
-  className,
-  style,
-  gutterBottom,
+  className = "",
+  style = {},
+  gutterBottom = false,
   ...props
 }) => {
   return (
@@ -23,7 +23,8 @@ const Typography = ({
 Typography.propTypes = {
   variant: PropTypes.oneOf([
     "heading1",
-    "subheading",
+    "subheading1",
+    "subheading2",
     "body1",
     "body2",
     "caption",
@@ -33,13 +34,6 @@ Typography.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   gutterBottom: PropTypes.bool,
-};
-
-Typography.defaultProps = {
-  variant: "body1",
-  className: "",
-  style: {},
-  gutterBottom: false,
 };
 
 export default Typography;

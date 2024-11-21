@@ -12,10 +12,10 @@ function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/roles" element={<Roles />} />
-          <Route path="/roles/add-role" element={<AddRole />} />
-          <Route path="/roles/edit-role/:id" element={<AddRole />} />
+          <Route path={homeRoute} element={<Home />} />
+          <Route path={rolesRoute} element={<Roles />} />
+          <Route path={addRoleRoute} element={<AddRole />} />
+          <Route path={editRoleRoute} element={<AddRole />} />
           <Route path="/page2" element={<Page2 />} />
           <Route path="/page3" element={<Page3 />} />
         </Routes>
@@ -25,3 +25,9 @@ function App() {
 }
 
 export default App;
+
+export const homeRoute = "/";
+export const rolesRoute = "/roles";
+export const addRoleRoute = "/roles/add-role";
+export const editRoleNeutralRoute = "/roles/edit-role";
+export const editRoleRoute = `${editRoleNeutralRoute}/:id`;

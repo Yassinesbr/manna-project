@@ -5,13 +5,16 @@ import SwitchButton from "../../components/SwitchButton";
 import Button from "../../components/Button";
 import { AccessLevel } from "../../enum/accessLevel";
 import useAddRole from "../../hooks/useAddRole";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { PermissionType } from "../../enum/permissionTypes";
 import Typography from "../../components/Typography";
+import { useEffect } from "react";
+import { rolesRoute } from "../../App";
 
 const AddRole = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     value,
@@ -19,10 +22,17 @@ const AddRole = () => {
     selectedIcon,
     setSelectedIcon,
     permissions,
+    setPermissions,
     handleSwitchChange,
     handleSave,
     loading,
   } = useAddRole();
+
+  useEffect(() => {
+    if (location.state && location.state.permissions) {
+      setPermissions(location.state.permissions);
+    }
+  }, [location.state, setPermissions]);
 
   if (loading) {
     return <div className="loading-message">Loading...</div>;
@@ -104,7 +114,7 @@ const AddRole = () => {
         <Button
           label="Cancel"
           variant="secondary"
-          onClick={() => navigate("/roles")}
+          onClick={() => navigate(rolesRoute)}
           style={{ width: "375px" }}
         />
         <Button

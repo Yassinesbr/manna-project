@@ -1,10 +1,10 @@
-// useAddRole.js
 import { useState, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { NotificationContext } from "../context/NotificationContext";
 import { addRole, getRoleById } from "../api/roleService";
 import { PermissionType } from "../enum/permissionTypes";
 import useModifyRole from "./useModifyRole";
+import { rolesRoute } from "../App";
 
 const useAddRole = () => {
   const { id } = useParams();
@@ -50,7 +50,7 @@ const useAddRole = () => {
       try {
         await addRole(roleData);
         showNotification("Role added successfully!", "success");
-        navigate("/roles");
+        navigate(rolesRoute);
       } catch (error) {
         console.error("Error saving role:", error);
         showNotification("An error has occurred.", "error");
@@ -82,6 +82,7 @@ const useAddRole = () => {
     selectedIcon,
     setSelectedIcon,
     permissions,
+    setPermissions,
     handleSwitchChange,
     handleSave,
     loading: loading || modifying,

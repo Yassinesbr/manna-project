@@ -5,12 +5,26 @@ import "./RoleCard.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import Typography from "../Typography";
+import { getRoleById } from "../../api/roleService";
+import { addRoleRoute, editRoleNeutralRoute } from "../../App";
 
 const RoleCard = ({ id, role, users, isDefault = false, icon, onDelete }) => {
   const navigate = useNavigate();
   const handleEdit = () => {
-    navigate(`/roles/edit-role/${id}`);
+    navigate(`${editRoleNeutralRoute}/${id}`);
   };
+
+  const handleUseAsTemplate = async () => {
+    try {
+      const roleData = await getRoleById(id);
+      navigate(addRoleRoute, {
+        state: { permissions: roleData.permissions },
+      });
+    } catch (error) {
+      console.error("Error fetching role:", error);
+    }
+  };
+
   const cardTitle = isDefault ? "Default Role" : "Custom Role";
   return (
     <div className="role-card">
@@ -52,7 +66,11 @@ const RoleCard = ({ id, role, users, isDefault = false, icon, onDelete }) => {
           Users assigned
         </Typography>
       </div>
-      <Typography variant="underline" className="color-primary">
+      <Typography
+        variant="underline"
+        className="color-primary"
+        onClick={handleUseAsTemplate}
+      >
         Use as template
       </Typography>
     </div>
@@ -60,7 +78,7 @@ const RoleCard = ({ id, role, users, isDefault = false, icon, onDelete }) => {
 };
 
 RoleCard.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   users: PropTypes.number.isRequired,
   isDefault: PropTypes.bool,

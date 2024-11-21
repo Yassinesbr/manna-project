@@ -11,13 +11,14 @@ import {
   integrationIcon,
   settingIcon,
 } from "../../assets";
+import { rolesRoute } from "../../App";
 
 const Sidebar = () => {
   const location = useLocation();
   const menuItems = [
     { path: "/page2", icon: speedIcon },
     { path: "/page3", icon: lockIcon },
-    { path: "/roles", icon: groupIcon },
+    { path: rolesRoute, icon: groupIcon },
     { path: "/page4", icon: domaineIcon },
     { path: "/page5", icon: autoAwesomeIcon },
     { path: "/page6", icon: articleIcon },
