@@ -25,7 +25,6 @@ const AddRole = () => {
     setPermissions,
     handleSwitchChange,
     handleSave,
-    loading,
   } = useAddRole();
 
   useEffect(() => {
@@ -34,9 +33,6 @@ const AddRole = () => {
     }
   }, [location.state, setPermissions]);
 
-  if (loading) {
-    return <div className="loading-message">Loading...</div>;
-  }
   const title = id ? "Edit Role" : "Add Custom Role";
   return (
     <>

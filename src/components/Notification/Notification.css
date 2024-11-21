@@ -21,11 +21,11 @@
   left: 0;
 }
 
-.notification.adding {
+.notification.updating {
   background-color: var(--gray-1);
 }
 
-.notification.updating {
+.notification.success {
   background-color: var(--primary-color);
 }
 

@@ -13,7 +13,7 @@ const useDeleteRole = () => {
       setRoles((prevRoles) =>
         prevRoles.filter((role) => role.id !== deletedId)
       );
-      showNotification("Role deleted successfully!", "success");
+      showNotification("Custom Role Deleted.", "error");
     } catch (err) {
       console.error("Error deleting role:", err);
       showNotification("Failed to delete role.", "error");

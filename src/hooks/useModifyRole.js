@@ -12,6 +12,7 @@ const useModifyRole = () => {
   const modifyRole = async (id, roleData) => {
     setLoading(true);
     try {
+      showNotification("Custom Role Updating...", "updating");
       await updateRole({ id, ...roleData });
       showNotification("Role updated successfully!", "success");
       navigate(rolesRoute);

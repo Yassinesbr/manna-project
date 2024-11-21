@@ -5,26 +5,19 @@ import AddCostumeRoleCard from "../../components/AddCostumeRoleCard";
 import roleIcons from "../../enum/roleIcon";
 import useRoles from "../../hooks/useRoles";
 import Typography from "../../components/Typography";
+import { useContext } from "react";
+import { LoaderContext } from "../../context/LoaderContext";
 
 const Roles = () => {
   const {
     roles,
-    loading,
-    error,
     isModalOpen,
     roleToDelete,
     handleDeleteClick,
     confirmDelete,
     cancelDelete,
   } = useRoles();
-
-  if (loading) {
-    return <div>Loading roles...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  const { isLoading } = useContext(LoaderContext);
 
   return (
     <div>
@@ -47,7 +40,7 @@ const Roles = () => {
             onDelete={() => handleDeleteClick(role)}
           />
         ))}
-        <AddCostumeRoleCard />
+        {!isLoading && <AddCostumeRoleCard />}
       </div>
       <ConfirmationModal
         isOpen={isModalOpen}

@@ -5,12 +5,15 @@ import { addRole, getRoleById } from "../api/roleService";
 import { PermissionType } from "../enum/permissionTypes";
 import useModifyRole from "./useModifyRole";
 import { rolesRoute } from "../App";
+import { LoaderContext } from "../context/LoaderContext";
 
 const useAddRole = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const showNotification = useContext(NotificationContext);
-  const { modifyRole, loading: modifying } = useModifyRole();
+  const { showLoader, hideLoader } = useContext(LoaderContext);
+
+  const { modifyRole } = useModifyRole();
 
   const [value, setValue] = useState("");
   const [selectedIcon, setSelectedIcon] = useState(0);
@@ -20,7 +23,6 @@ const useAddRole = () => {
       accessLevel: 1,
     }))
   );
-  const [loading, setLoading] = useState(!!id);
 
   const handleSwitchChange = (selectedValue, permissionId) => {
     setPermissions((prevPermissions) =>
@@ -60,6 +62,12 @@ const useAddRole = () => {
 
   useEffect(() => {
     if (id) {
+      showLoader();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (id) {
       getRoleById(id)
         .then((role) => {
           setValue(role.name);
@@ -68,13 +76,14 @@ const useAddRole = () => {
         })
         .catch((error) => {
           console.error("Error fetching role:", error);
+          hideLoader();
           showNotification("Failed to load role.", "error");
         })
         .finally(() => {
-          setLoading(false);
+          hideLoader();
         });
     }
-  }, [id, showNotification]);
+  }, [id, showNotification, hideLoader]);
 
   return {
     value,
@@ -85,7 +94,6 @@ const useAddRole = () => {
     setPermissions,
     handleSwitchChange,
     handleSave,
-    loading: loading || modifying,
   };
 };
 

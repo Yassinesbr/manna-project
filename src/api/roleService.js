@@ -53,7 +53,10 @@ export const getRoleById = async (id) => {
 
 export const updateRole = async (role) => {
   try {
-    await axios.put(`/UpdateRole?identifier=yassine_essebbar`, role);
+    await axios.put(
+      `${API_BASE_URL}/UpdateRole?identifier=yassine_essebbar`,
+      role
+    );
   } catch (err) {
     console.error("Error updating role:", err);
     throw err;

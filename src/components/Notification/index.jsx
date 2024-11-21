@@ -7,7 +7,7 @@ const Notification = ({ message, type }) => {
 
 Notification.propTypes = {
   message: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(["adding", "updating", "error"]).isRequired,
+  type: PropTypes.oneOf(["success", "updating", "error"]).isRequired,
 };
 
 export default Notification;

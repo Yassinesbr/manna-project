@@ -2,16 +2,17 @@ import { useEffect, useState, useContext } from "react";
 import { NotificationContext } from "../context/NotificationContext";
 import { getRoles } from "../api/roleService";
 import useDeleteRole from "./useDeleteRole";
+import { LoaderContext } from "../context/LoaderContext";
 
 const useRoles = () => {
+  const { showLoader, hideLoader } = useContext(LoaderContext);
   const showNotification = useContext(NotificationContext);
   const [roles, setRoles] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [roleToDelete, setRoleToDelete] = useState(null);
 
-  const { handleDelete, loading: deleting } = useDeleteRole();
+  const { handleDelete } = useDeleteRole();
 
   const handleDeleteClick = (role) => {
     if (!role.isCustom) {
@@ -24,7 +25,11 @@ const useRoles = () => {
 
   const confirmDelete = () => {
     if (roleToDelete) {
-      handleDelete(roleToDelete, setRoles, setIsModalOpen);
+      setIsModalOpen(false);
+      showLoader();
+      handleDelete(roleToDelete, setRoles, setIsModalOpen).finally(() => {
+        hideLoader();
+      });
     }
   };
 
@@ -34,21 +39,21 @@ const useRoles = () => {
   };
 
   useEffect(() => {
+    showLoader();
     getRoles()
       .then((response) => {
         setRoles(response);
-        setLoading(false);
+        hideLoader();
       })
       .catch((error) => {
         console.error("Error fetching roles:", error);
         setError("Failed to load roles.");
-        setLoading(false);
+        hideLoader();
       });
   }, []);
 
   return {
     roles,
-    loading: loading || deleting,
     error,
     isModalOpen,
     roleToDelete,
